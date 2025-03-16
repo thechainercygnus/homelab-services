@@ -1,0 +1,16 @@
+{
+    admin: 0.0.0.0:2019
+}
+
+*.domain.tld {
+    tls {
+        dns cloudflare {env.CF_API_TOKEN}
+        propagation_delay 2m
+        resolvers 1.1.1.1
+    }
+
+    @gitea host git.domain.tld
+    handle @gitea {
+        reverse_proxy gitea-server:3000
+    }
+}
