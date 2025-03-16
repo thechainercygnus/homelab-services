@@ -6,9 +6,8 @@ services:
       - caddy_config:/config
       - caddy_data:/data
       - ./Caddyfile:/etc/caddy/Caddyfile
-    environment:
-      - CF_API_TOKEN=${CF_API_TOKEN}
-      - ACME_AGREE=true
+    env_file:
+      - .env
     networks:
       - caddy
     ports:
