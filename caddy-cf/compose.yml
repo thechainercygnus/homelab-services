@@ -1,0 +1,27 @@
+services:
+  caddy:
+    build: .
+    container_name: caddy
+    volumes:
+      - caddy_config:/config
+      - caddy_data:/data
+      - ./Caddyfile:/etc/caddy/Caddyfile
+    environment:
+      - CF_API_TOKEN=${CF_API_TOKEN}
+      - ACME_AGREE=true
+    networks:
+      - caddy
+    ports:
+      - 2019:2019
+      - 80:80
+      - 443:443
+
+volumes:
+  caddy_config:
+    driver: local
+  caddy_data:
+    driver: local
+
+networks:
+  caddy:
+    external: true
