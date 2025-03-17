@@ -20,6 +20,12 @@ services:
     depends_on:
       - db
     restart: unless-stopped
+    labels:
+      - homepage.group=Development
+      - homepage.name=Gitea
+      - homepage.icon=si-gitea-#609926
+      - homepage.href=https://git.durish.xyz
+      - homepage.description=Remote Repository
 
   db:
     image: postgres:14
