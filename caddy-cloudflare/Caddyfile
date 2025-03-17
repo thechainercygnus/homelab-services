@@ -13,4 +13,9 @@
     handle @gitea {
         reverse_proxy gitea-server:3000
     }
+
+    @homepage host homepage.domain.tld
+    handle @homepage {
+        reverse_proxy homepage-server:3000
+    }
 }
