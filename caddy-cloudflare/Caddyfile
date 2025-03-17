@@ -20,7 +20,12 @@
     }
 
     @lldap host lldap.domain.tld
-    handl @lldap {
+    handle @lldap {
         reverse_proxy lldap-server:17170
+    }
+
+    @ldaps host ldaps.domain.tld
+    handle @ldaps {
+        reverse_proxy lldap-server:636
     }
 }
