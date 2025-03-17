@@ -1,0 +1,34 @@
+---
+services:
+  homepage:
+    image: ghcr.io/gethomepage/homepage:v1.0.4
+    container_name: homepage-server
+    env_file:
+      - .env
+    networks:
+      - caddy
+      - homepage-backend
+    volumes:
+      - /srv/homepage/config:/app/config
+      - /srv/homepage/images:/app/images  # for custom background images
+      - /srv/homepage/icons:/app/icons  # for custom icons
+    restart: unless-stopped
+
+  dockerproxy:
+    image: ghcr.io/tecnativa/docker-socket-proxy:0.3.0
+    container_name: homepage-dockerproxy
+    environment:
+      - CONTAINERS=1 # Allow access to viewing containers
+      - SERVICES=1 # Allow access to viewing services (necessary when using Docker Swarm)
+      - TASKS=1 # Allow access to viewing tasks (necessary when using Docker Swarm)
+      - POST=0 # Disallow any POST operations (effectively read-only)
+    networks:
+      - homepage-backend
+    volumes:
+      - /run/docker.sock:/run/docker.sock:ro # Mounted as read-only
+    restart: unless-stopped
+
+networks:
+  caddy:
+    external: true
+  homepage-backend:
