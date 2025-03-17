@@ -18,4 +18,9 @@
     handle @homepage {
         reverse_proxy homepage-server:3000
     }
+
+    @lldap host lldap.domain.tld
+    handl @lldap {
+        reverse_proxy lldap-server:17170
+    }
 }
