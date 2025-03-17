@@ -6,7 +6,7 @@ services:
     volumes:
       - caddy_config:/config
       - caddy_data:/data
-      - ./Caddyfile:/etc/caddy/Caddyfile
+      - ./Caddyfile.prd:/etc/caddy/Caddyfile
     env_file:
       - .env
     networks:
