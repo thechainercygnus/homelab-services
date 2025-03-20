@@ -1,33 +1,32 @@
 services:
   lldap:
     image: lldap/lldap:stable
-    name: lldap-server
+    container_name: lldap-server
     volumes:
       - "/srv/lldap/data:/data"
       - "/srv/lldap/certs:/certs"
+      - "/srv/lldap/files:/files"
     networks:
       - lldap-backend
       - lldaps
       - caddy
     env_file:
-      - /src/env/lldap.env
+      - /srv/env/lldap.env
     restart: unless-stopped
-      
 
-    db:
-      image: postgres:14
-      container_name: lldap-db
-      env_file:
-        /srv/env/lldapdb.env
-      networks:
-        - lldap-backend
-      volumes:
-        - lldap-db:/var/lib/postgresql/data
-      restart: unless-stopped
+  db:
+    image: postgres:14
+    container_name: lldap-db
+    env_file:
+      - /srv/env/lldapdb.env
+    networks:
+      - lldap-backend
+    volumes:
+      - lldap-db:/var/lib/postgresql/data
+    restart: unless-stopped
 
 volumes:
   lldap-db:
-    driver: local
     external: true
   lldap_data:
     driver: local
