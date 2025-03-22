@@ -2,30 +2,42 @@
     admin 0.0.0.0:2019
 }
 
-*.domain.tld {
+git.domain.tld {
     tls {
         dns cloudflare {env.CF_API_TOKEN}
         propagation_delay 2m
         resolvers 1.1.1.1
     }
 
-    @gitea host git.domain.tld
-    handle @gitea {
-        reverse_proxy gitea-server:3000
+    reverse_proxy gitea-server:3000
+}
+
+homepage.domain.tld {
+    tls {
+        dns cloudflare {env.CF_API_TOKEN}
+        propagation_delay 2m
+        resolvers 1.1.1.1
     }
 
-    @homepage host homepage.domain.tld
-    handle @homepage {
-        reverse_proxy homepage-server:3000
+    reverse_proxy homepage-server:3000
+}
+
+lldap.domain.tld {
+    tls {
+        dns cloudflare {env.CF_API_TOKEN}
+        propagation_delay 2m
+        resolvers 1.1.1.1
     }
 
-    @lldap host lldap.domain.tld
-    handle @lldap {
-        reverse_proxy lldap-server:17170
+    reverse_proxy lldap-server:17170
+}
+
+ldaps.domain.tld {
+    tls {
+        dns cloudflare {env.CF_API_TOKEN}
+        propagation_delay 2m
+        resolvers 1.1.1.1
     }
 
-    @ldaps host ldaps.domain.tld
-    handle @ldaps {
-        reverse_proxy lldap-server:636
-    }
+    reverse_proxy lldap-server:636
 }
