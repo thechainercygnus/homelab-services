@@ -4,7 +4,7 @@ services:
     image: ghcr.io/gethomepage/homepage:v1.0.4
     container_name: homepage-server
     env_file:
-      - .env
+      - /srv/env/homepage.env
     networks:
       - caddy
       - homepage-backend
