@@ -1,63 +1,33 @@
 {
     admin 0.0.0.0:2019
-}
-
-git.domain.tld {
+    email admin@durish.xyz
     tls {
         dns cloudflare {env.CF_API_TOKEN}
         propagation_delay 2m
         resolvers 1.1.1.1
     }
+}
 
+git.domain.tld {
     reverse_proxy gitea-server:3000
 }
 
 homepage.domain.tld {
-    tls {
-        dns cloudflare {env.CF_API_TOKEN}
-        propagation_delay 2m
-        resolvers 1.1.1.1
-    }
-
     reverse_proxy homepage-server:3000
 }
 
 lldap.domain.tld {
-    tls {
-        dns cloudflare {env.CF_API_TOKEN}
-        propagation_delay 2m
-        resolvers 1.1.1.1
-    }
-
     reverse_proxy lldap-server:17170
 }
 
 ldaps.domain.tld {
-    tls {
-        dns cloudflare {env.CF_API_TOKEN}
-        propagation_delay 2m
-        resolvers 1.1.1.1
-    }
-
     reverse_proxy lldap-server:636
 }
 
 cdio.domain.tld {
-    tls {
-        dns cloudflare {env.CF_API_TOKEN}
-        propagation_delay 2m
-        resolvers 1.1.1.1
-    }
-
     reverse_proxy changedetection:5000
 }
 
 search.domain.tld {
-    tls {
-        dns cloudflare {env.CF_API_TOKEN}
-        propagation_delay 2m
-        resolvers 1.1.1.1
-    }
-
     reverse_proxy searxng:8080
 }
