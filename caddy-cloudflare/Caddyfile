@@ -51,3 +51,13 @@ cdio.domain.tld {
 
     reverse_proxy changedetection:5000
 }
+
+search.domain.tld {
+    tls {
+        dns cloudflare {env.CF_API_TOKEN}
+        propagation_delay 2m
+        resolvers 1.1.1.1
+    }
+
+    reverse_proxy searxng:8080
+}
