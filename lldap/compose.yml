@@ -1,0 +1,50 @@
+services:
+  lldap:
+    image: lldap/lldap:stable
+    container_name: lldap-server
+    volumes:
+      - "/srv/lldap/data:/data"
+      - "/srv/lldap/certs:/certs"
+      - "/srv/lldap/files:/files"
+    networks:
+      - lldap-backend
+      - lldaps
+      - caddy
+    env_file:
+      - /srv/env/lldap.env
+    restart: unless-stopped
+    labels:
+      - homepage.group=Core
+      - homepage.name=lldap
+      - homepage.icon=si-serverless
+      - homepage.href=https://lldap.durish.xyz
+      - homepage.description=User and Group Management
+
+  db:
+    image: postgres:14
+    container_name: lldap-db
+    env_file:
+      - /srv/env/lldapdb.env
+    networks:
+      - lldap-backend
+    volumes:
+      - lldap-db:/var/lib/postgresql/data
+    restart: unless-stopped
+    labels:
+      - homepage.group=Databases
+      - homepage.name=lldap
+      - homepage.icon=si-serverless
+
+volumes:
+  lldap-db:
+    external: true
+  lldap_data:
+    driver: local
+
+networks:
+  caddy:
+    external: true
+  lldap-backend:
+    external: true
+  lldaps:
+    external: true
