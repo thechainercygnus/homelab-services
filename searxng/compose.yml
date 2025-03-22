@@ -17,6 +17,12 @@ services:
       - SETGID
       - SETUID
     restart: unless-stopped
+    labels:
+      - homepage.group=Services
+      - homepage.name=SearXNG
+      - homepage.icon=si-searxng
+      - homepage.href=https://search.domain.tld
+      - homepage.description=Self Hosted Search
 
   redis:
     container_name: redis
@@ -33,6 +39,10 @@ services:
       - SETGID
       - SETUID
       - DAC_OVERRIDE
+    labels:
+      - homepage.group=Databases
+      - homepage.name=SearXNG Redis
+      - homepage.icon=si-redis
 
 networks:
   caddy:
