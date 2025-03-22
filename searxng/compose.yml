@@ -43,7 +43,6 @@ services:
       - homepage.group=Databases
       - homepage.name=SearXNG Redis
       - homepage.icon=si-searxng
-      - homepage.showStats=true
 
 networks:
   caddy:
