@@ -1,0 +1,33 @@
+services:
+  gluetun-proxy:
+    image: qmcgaw/gluetun
+    container_name: gluetun-proxy
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - /dev/net/tun:/dev/net/tun
+    networks:
+      - gluetun-proxy
+    ports:
+      - 8889:8889/tcp # Gluetun
+      - 1025:8888/tcp # TCP Proxy
+      - 1025:8888/udp # UDP Proxy
+      - 1026:8388/tcp # Shadowsocks TCP
+      - 1026:8388/udp # Shadowsocks UDP
+    volumes:
+      - /srv/gluetun/proxy:/gluetun
+    env_file:
+      # Gluetun Wiki Reference: https://github.com/qdm12/gluetun-wiki 
+      - /srv/env/gluetun-proxy.env
+    restart: unless-stopped
+    labels:
+      - homepage.section=Core
+      - homepage.name=Gluetun Proxy
+      - homepage.description=Network Proxy Services
+      - homepage.icon=si-wireguard
+      - homepage.widget.type=gluetun
+      - homepage.widget.url=http://gtp.domain.tld
+
+networks:
+  gluetun-proxy:
+    external: true
