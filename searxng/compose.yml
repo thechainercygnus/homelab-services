@@ -42,7 +42,7 @@ services:
     labels:
       - homepage.group=Databases
       - homepage.name=SearXNG Redis
-      - homepage.icon=si-redis
+      - homepage.icon=si-searxng
 
 networks:
   caddy:
