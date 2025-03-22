@@ -15,8 +15,11 @@ services:
     labels:
       - homepage.group=Services
       - homepage.name=Change Detection
-      - homepage.icon=si-changedetection.svg
+      - homepage.icon=sh-changedetection.svg
       - homepage.description=Web Site Change Monitoring
+      - homepage.widget.type=changedetectionio
+      - homepage.widget.url=https://cdio.durish.xyz
+      - homepage.widget.key=${CDIO_KEY}
     depends_on:
       sockpuppetbrowser:
         condition: service_started
