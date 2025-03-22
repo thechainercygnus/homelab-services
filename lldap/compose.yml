@@ -13,6 +13,12 @@ services:
     env_file:
       - /srv/env/lldap.env
     restart: unless-stopped
+    labels:
+      - homepage.group=Core
+      - homepage.name=lldap
+      - homepage.icon=si-serverless
+      - homepage.href=https://lldap.durish.xyz
+      - homepage.description=User and Group Management
 
   db:
     image: postgres:14
@@ -24,6 +30,10 @@ services:
     volumes:
       - lldap-db:/var/lib/postgresql/data
     restart: unless-stopped
+    labels:
+      - homepage.group=Core
+      - homepage.name=lldap
+      - homepage.icon=si-serverless
 
 volumes:
   lldap-db:
