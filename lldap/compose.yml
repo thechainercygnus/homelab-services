@@ -31,7 +31,7 @@ services:
       - lldap-db:/var/lib/postgresql/data
     restart: unless-stopped
     labels:
-      - homepage.group=Core
+      - homepage.group=Databases
       - homepage.name=lldap
       - homepage.icon=si-serverless
 
