@@ -6,7 +6,7 @@ services:
     volumes:
       - caddy_config:/config
       - caddy_data:/data
-      - ./Caddyfile.prd:/etc/caddy/Caddyfile
+      - /srv/caddy/Caddyfile:/etc/caddy/Caddyfile
     env_file:
       - /srv/env/caddy.env
     networks:
@@ -15,6 +15,11 @@ services:
       - 2019:2019
       - 80:80
       - 443:443
+    labels:
+      - homepage.group=Core
+      - homepage.name=caddy
+      - homepage.icon=si-caddy.svg
+      - homepage.description=Reverse Proxy Service
 
 volumes:
   caddy_config:
