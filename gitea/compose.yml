@@ -4,7 +4,7 @@ services:
     image: gitea/gitea:1.23.5
     container_name: gitea-server
     env_file:
-      .env
+      /srv/env/gitea.env
     environment:
       - USER_UID=1000
       - USER_GID=1000
@@ -31,12 +31,16 @@ services:
     image: postgres:14
     container_name: gitea-db
     env_file:
-      - .env
+      - /srv/env/giteadb.env
     networks:
       - gitea-backend
     volumes:
       - gitea-db:/var/lib/postgresql/data
     restart: unless-stopped
+    labels:
+      - homepage.group=Databases
+      - homepage.name=Gitea
+      - homepage.icon=si-gitea-#609926
 
 volumes:
   gitea-data:
