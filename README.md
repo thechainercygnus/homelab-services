@@ -2,6 +2,52 @@
 
 These are the services I have running in my homelab. These compose files when combined with my [scripts](#) and [configs](#) repos comprise the entirety of my homelab at this time and how to rebuild it from scratch.
 
+## Services
+
+### Active
+
+#### Caddy
+* Reverse Proxy
+* [Documentation](https://caddyserver.com/docs/)
+
+#### Change Detection
+* Website Change Monitoring / Price Tracker
+* [Documentation](https://github.com/dgtlmoon/changedetection.io)
+
+#### Gitea
+* Git Repository & Docker Image Registry
+* [Documentation](https://docs.gitea.com/)
+
+#### Homepage
+* Start Page / Application Launcher
+* [Documentation](https://gethomepage.dev/)
+
+#### lldap
+* Lightweight User Directory
+* [Documentation](https://github.com/lldap/lldap)
+
+#### SearXNG
+* Local federated metasearch engine
+* [Documentation](https://docs.searxng.org/)
+
+### Researching
+
+This is the list of services I am currently looking to integrate into the environment, if any.
+
+#### Gluetun
+* VPN Proxy for containers
+* [Documentation](https://github.com/qdm12/gluetun-wiki)
+
+#### Authelia
+
+#### Keycloak
+
+#### Tailscale
+
+## User Management
+
+Where possible, all services will support lldap's implementation of the LDAP protocol.
+
 ## Conventions
 
 I have made some architectural decisions that impact how I have structured my compose files. I am storing all service related configurations and data under the `/srv` path with this structure:
