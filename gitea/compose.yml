@@ -24,7 +24,7 @@ services:
       - homepage.group=Development
       - homepage.name=Gitea
       - homepage.icon=si-gitea-#609926
-      - homepage.href=https://git.durish.xyz
+      - homepage.href=https://git.domain.tld
       - homepage.description=Remote Repository
 
   db:

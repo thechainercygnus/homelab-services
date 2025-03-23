@@ -16,7 +16,7 @@ services:
       - homepage.group=Services
       - homepage.name=Change Detection
       - homepage.icon=sh-changedetection.svg
-      - homepage.href=https://cdio.durish.xyz
+      - homepage.href=https://cdio.domain.tld
       - homepage.description=Web Site Change Monitoring
       - homepage.widget.type=changedetectionio
       - homepage.widget.href=changedetection
