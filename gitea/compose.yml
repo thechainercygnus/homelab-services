@@ -39,8 +39,9 @@ services:
     restart: unless-stopped
     labels:
       - homepage.group=Databases
-      - homepage.name=Gitea
+      - homepage.name=Gitea PostgreSQL 
       - homepage.icon=si-gitea-#609926
+      - homepage.showStats=true
 
 volumes:
   gitea-data:

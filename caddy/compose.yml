@@ -6,18 +6,19 @@ services:
     volumes:
       - caddy_config:/config
       - caddy_data:/data
-      - /srv/caddy/Caddyfile:/etc/caddy/Caddyfile
+      - /srv/caddy:/etc/caddy
     env_file:
       - /srv/env/caddy.env
     networks:
       - caddy
+      - gluetun-caddy
     ports:
       - 2019:2019
       - 80:80
       - 443:443
     labels:
       - homepage.group=Core
-      - homepage.name=caddy
+      - homepage.name=Caddy
       - homepage.icon=sh-caddy.svg
       - homepage.description=Reverse Proxy Service
       - homepage.widget.type=caddy
@@ -31,4 +32,6 @@ volumes:
 
 networks:
   caddy:
+    external: true
+  gluetun-caddy:
     external: true
