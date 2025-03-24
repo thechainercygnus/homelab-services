@@ -32,7 +32,7 @@ services:
     restart: unless-stopped
     labels:
       - homepage.group=Databases
-      - homepage.name=lldap
+      - homepage.name=lldap PostgreSQL 
       - homepage.icon=si-serverless
 
 volumes:
