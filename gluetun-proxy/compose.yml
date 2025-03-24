@@ -28,7 +28,7 @@ services:
       - homepage.icon=sh-mullvad-vpn.svg
       - homepage.description=Network Proxy Services
       - homepage.widget.type=gluetun
-      - homepage.widget.url=https://gtp.domain.tld
+      - homepage.widget.url=http://gtp.domain.tld:8000
 
   firefox:
     image: lscr.io/linuxserver/firefox:latest
