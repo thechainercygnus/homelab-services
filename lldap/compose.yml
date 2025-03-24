@@ -17,7 +17,7 @@ services:
       - homepage.group=Core
       - homepage.name=lldap
       - homepage.icon=si-serverless
-      - homepage.href=https://lldap.durish.xyz
+      - homepage.href=https://lldap.domain.tld
       - homepage.description=User and Group Management
 
   db:
