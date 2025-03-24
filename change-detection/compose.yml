@@ -19,7 +19,7 @@ services:
       - homepage.href=https://cdio.domain.tld
       - homepage.description=Web Site Change Monitoring
       - homepage.widget.type=changedetectionio
-      - homepage.widget.href=https://cdio.domain.tld
+      - homepage.widget.url=https://cdio.domain.tld
       - homepage.widget.key=${CDIO_KEY}
     depends_on:
       sockpuppetbrowser:
