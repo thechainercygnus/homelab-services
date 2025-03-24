@@ -25,7 +25,7 @@ services:
       - homepage.widget.url=http://ap.domain.tld:8001
       - homepage.widget.key=${GLUETUN_KEY}
 
-  firefox:
+  firefox-arrsuite:
     image: lscr.io/linuxserver/firefox:latest
     container_name: firefox-arrsuite
     security_opt:

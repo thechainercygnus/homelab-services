@@ -3,4 +3,10 @@
     email admin@domain.tld
 }
 
-import /etc/caddy/*/*.caddy
+import /etc/caddy/arrsuite/*.caddy
+import /etc/caddy/changedetection/*.caddy
+import /etc/caddy/gitea/*.caddy
+import /etc/caddy/gluetun-proxy/*.caddy
+import /etc/caddy/homepage/*.caddy
+import /etc/caddy/lldap/*.caddy
+import /etc/caddy/searxng/*.caddy
