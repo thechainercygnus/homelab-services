@@ -1,0 +1,10 @@
+sabnzbd.domain.tld {
+    tls {
+        dns cloudflare {env.CF_API_TOKEN}
+        propagation_delay 2m
+        resolvers 1.1.1.1
+    }
+
+    reverse_proxy gluetun-arrsuite:8080
+
+}

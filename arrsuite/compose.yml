@@ -1,0 +1,219 @@
+services:
+  gluetun-arrsuite:
+    image: qmcgaw/gluetun
+    container_name: gluetun-arrsuite
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - /dev/net/tun:/dev/net/tun
+    ports:
+      - 8001:8000
+    volumes:
+      - /srv/gluetun/arrsuite:/gluetun
+      - /srv/gluetun/auth/config.toml:/gluetun/auth/config.toml:ro
+    env_file:
+      - /srv/env/gluetun-arrsuite.env
+    restart: unless-stopped
+    networks:
+      - gluetun-caddy
+    labels:
+      - homepage.group=arrSuite
+      - homepage.name=arrSuite Gluetun Proxy
+      - homepage.icon=sh-mullvad-vpn.svg
+      - homepage.description=arrSuite Proxy Service
+      - homepage.widget.type=gluetun
+      - homepage.widget.url=http://ap.domain.tld:8001
+      - homepage.widget.key=${GLUETUN_KEY}
+
+  firefox:
+    image: lscr.io/linuxserver/firefox:latest
+    container_name: firefox-arrsuite
+    security_opt:
+      - seccomp:unconfined #optional
+    env_file:
+      - /srv/env/common.env
+    volumes:
+      - /srv/firefox/arrsuite/config:/config
+    network_mode: service:gluetun-arrsuite
+    labels:
+      - homepage.group=arrSuite
+      - homepage.name=Firefox
+      - homepage.icon=sh-firefox.svg
+      - homepage.description=Proxied Browsing
+      - homepage.href=https://arr.domain.tld
+    shm_size: "1gb"
+    restart: unless-stopped
+    depends_on:
+      gluetun-arrsuite:
+        condition: service_started
+
+  sabnzbd:
+    image: lscr.io/linuxserver/sabnzbd:latest
+    container_name: sabnzbd
+    env_file:
+      - /srv/env/common.env
+    volumes:
+      - /srv/sabnzbd/config:/config
+      - /srv/arrsuite/Media:/Media
+    restart: unless-stopped
+    network_mode: service:gluetun-arrsuite
+    depends_on:
+      gluetun-arrsuite:
+        condition: service_started
+    labels:
+      - autoheal=true
+      - homepage.group=arrSuite
+      - homepage.name=SABnzbd
+      - homepage.icon=sh-sabnzbd.svg
+      - homepage.description=arrSuite Downloader
+      - homepage.href=https://sabnzbd.domain.tld
+      - homepage.widget.type=sabnzbd
+      - homepage.widget.url=https://sabnzbd.domain.tld
+      - homepage.widget.key=${SABNZBD_KEY}
+    mem_limit: 2g
+    cpus: 2
+    security_opt:
+      - no-new-privileges:true
+    healthcheck:
+      test: curl google.com || exit 1
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  prowlarr:
+    image: hotio/prowlarr:latest
+    container_name: prowlarr
+    env_file:
+      - /srv/env/common.env
+    volumes:
+      - /srv/prowlarr/config:/config
+      - /srv/arrsuite/Media:/Media
+    restart: unless-stopped
+    labels:
+      - homepage.group=arrSuite
+      - homepage.name=Prowlarr
+      - homepage.icon=sh-prowlarr.svg
+      - homepage.description=arrSuite Index Manager
+      - homepage.href=https://prowlarr.domain.tld
+      - homepage.widget.type=prowlarr
+      - homepage.widget.url=https://prowlarr.domain.tld
+      - homepage.widget.key=${PROWLARR_KEY}
+    network_mode: service:gluetun-arrsuite
+    depends_on:
+      - gluetun-arrsuite
+      - sabnzbd
+    healthcheck:
+      test: curl -f http://localhost:9696 || exit 1
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    security_opt:
+      - no-new-privileges:true
+
+  sonarr:
+    image: lscr.io/linuxserver/sonarr:latest
+    container_name: sonarr
+    env_file:
+      - /srv/env/common.env
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /srv/sonarr/config:/config
+      - /srv/arrsuite/Media:/Media
+    restart: unless-stopped
+    labels:
+      - homepage.group=arrSuite
+      - homepage.name=Sonarr
+      - homepage.icon=sh-sonarr.svg
+      - homepage.description=arrSuite Series Collection Manager
+      - homepage.href=https://sonarr.domain.tld
+      - homepage.widget.type=sonarr
+      - homepage.widget.url=https://sonarr.domain.tld
+      - homepage.widget.key=${SONARR_KEY}
+    network_mode: service:gluetun-arrsuite
+    depends_on:
+      gluetun-arrsuite:
+        condition: service_started
+      prowlarr:
+        condition: service_healthy
+
+  radarr:
+    image: lscr.io/linuxserver/radarr:latest
+    container_name: radarr
+    env_file:
+      - /srv/env/common.env
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /srv/radarr/config:/config
+      - /srv/arrsuite/Media:/Media
+    restart: unless-stopped
+    labels:
+      - homepage.group=arrSuite
+      - homepage.name=Radarr
+      - homepage.icon=sh-radarr.svg
+      - homepage.description=arrSuite Movie Collection Manager
+      - homepage.href=https://radarr.domain.tld
+      - homepage.widget.type=radarr
+      - homepage.widget.url=https://radarr.domain.tld
+      - homepage.widget.key=${RADARR_KEY}
+    network_mode: service:gluetun-arrsuite
+    depends_on:
+      gluetun-arrsuite:
+        condition: service_started
+      prowlarr:
+        condition: service_healthy
+      sabnzbd:
+        condition: service_started
+
+  lidarr:
+    image: lscr.io/linuxserver/lidarr:latest
+    container_name: lidarr
+    env_file:
+      - /srv/env/common.env
+    volumes:
+      - /srv/lidarr/config:/config
+      - /srv/arrsuite/Media:/Media
+    restart: unless-stopped
+    labels:
+      - homepage.group=arrSuite
+      - homepage.name=Lidarr
+      - homepage.icon=sh-lidarr.svg
+      - homepage.description=arrSuite Music Collection Manager
+      - homepage.href=https://lidarr.domain.tld
+      - homepage.widget.type=lidarr
+      - homepage.widget.url=https://lidarr.domain.tld
+      - homepage.widget.key=${LIDARR_KEY}
+    network_mode: service:gluetun-arrsuite
+    depends_on:
+      gluetun-arrsuite:
+        condition: service_started
+      prowlarr:
+        condition: service_healthy
+
+  readarr:
+    image: lscr.io/linuxserver/readarr:develop
+    container_name: readarr
+    env_file:
+      - /srv/env/common.env
+    volumes:
+      - /srv/readarr/config:/config
+      - /srv/arrsuite/Media:/Media
+    restart: unless-stopped
+    labels:
+      - homepage.group=arrSuite
+      - homepage.name=Readarr
+      - homepage.icon=sh-readarr.svg
+      - homepage.description=arrSuite Book Collection Manager
+      - homepage.href=https://readarr.domain.tld
+      - homepage.widget.type=readarr
+      - homepage.widget.url=https://readarr.domain.tld
+      - homepage.widget.key=${READARR_KEY}
+    network_mode: service:gluetun-arrsuite
+    depends_on:
+      gluetun-arrsuite:
+        condition: service_started
+      prowlarr:
+        condition: service_healthy
+
+networks:
+  gluetun-caddy:
+    external: true
