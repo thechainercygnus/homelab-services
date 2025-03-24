@@ -5,7 +5,7 @@ services:
     container_name: changedetection
     hostname: changedetection
     volumes:
-      - changedetection-data:/datastore
+      - /srv/changedetection/data:/datastore
     env_file:
       - /srv/env/changedetection.env
     restart: unless-stopped
@@ -27,15 +27,19 @@ services:
 
   sockpuppetbrowser:
     hostname: sockpuppetbrowser
+    container_name: sockpuppetbrowser
     image: dgtlmoon/sockpuppetbrowser:latest
     restart: unless-stopped
     env_file:
       - /srv/env/sockpuppet.env
     networks:
       - changedetection-backend
-
-volumes:
-  changedetection-data:
+    labels:
+      - homepage.group=Headless
+      - homepage.name=Sock Puppet Browser
+      - homepage.icon=sh-chromium.svg
+      - homepage.description=Chrome Engine for Change Detection
+      - homepage.showStats=true
 
 networks:
   caddy:
