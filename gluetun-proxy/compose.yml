@@ -22,7 +22,7 @@ services:
     restart: unless-stopped
     labels:
       - homepage.group=Core
-      - homepage.name=gluetun
+      - homepage.name=Gluetun Proxy
       - homepage.icon=sh-mullvad-vpn.svg
       - homepage.description=Network Proxy Services
       - homepage.widget.type=gluetun
@@ -40,7 +40,7 @@ services:
     network_mode: service:gluetun-proxy
     labels:
       - homepage.group=Services
-      - homepage.name=gluetun
+      - homepage.name=Firefox
       - homepage.icon=sh-firefox.svg
       - homepage.description=Proxied Browsing
       - homepage.href=https://safe.domain.tld
