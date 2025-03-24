@@ -3,4 +3,4 @@
     email admin@domain.tld
 }
 
-import /etc/caddy/*.caddy
+import /etc/caddy/*/*.caddy
