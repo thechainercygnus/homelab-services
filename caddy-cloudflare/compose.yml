@@ -32,3 +32,5 @@ volumes:
 networks:
   caddy:
     external: true
+  gluetun-caddy:
+    external: true

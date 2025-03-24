@@ -8,6 +8,7 @@ services:
       - /dev/net/tun:/dev/net/tun
     networks:
       - gluetun-proxy
+      - gluetun-caddy
     ports:
       - 8000:8000 # Control Server
       - 8889:8889 # Gluetun
@@ -27,15 +28,15 @@ services:
       - homepage.widget.type=gluetun
       - homepage.widget.url=http://gtp.domain.tld:8000
 
-  firefox:
+  firefox-proxy:
     image: lscr.io/linuxserver/firefox:latest
-    container_name: firefox
+    container_name: firefox-proxy
     security_opt:
       - seccomp:unconfined #optional
     env_file:
       - /srv/env/common.env
     volumes:
-      - /srv/firefox/config:/config
+      - /srv/firefox/proxy/config:/config
     network_mode: service:gluetun-proxy
     labels:
       - homepage.group=Services
@@ -51,4 +52,6 @@ services:
 
 networks:
   gluetun-proxy:
+    external: true
+  gluetun-caddy:
     external: true
