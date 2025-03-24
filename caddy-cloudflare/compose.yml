@@ -11,6 +11,7 @@ services:
       - /srv/env/caddy.env
     networks:
       - caddy
+      - gluetun-caddy
     ports:
       - 2019:2019
       - 80:80
