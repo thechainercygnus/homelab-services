@@ -9,13 +9,10 @@ services:
     networks:
       - gluetun-proxy
     ports:
-      - 8889:8889/tcp # Gluetun
-      - 3000:3000/tcp # Firefox
-      - 3000:3000/udp # Firefox
-      - 1025:8888/tcp # TCP Proxy
-      - 1025:8888/udp # UDP Proxy
-      - 1026:8388/tcp # Shadowsocks TCP
-      - 1026:8388/udp # Shadowsocks UDP
+      - 8000:8000 # Control Server
+      - 8889:8889 # Gluetun
+      - 8888:8888/tcp # TCP Proxy
+      - 8388:8388/tcp # Shadowsocks TCP
     volumes:
       - /srv/gluetun/proxy:/gluetun
     env_file:
@@ -35,10 +32,8 @@ services:
     container_name: firefox
     security_opt:
       - seccomp:unconfined #optional
-    environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=America/Boise
+    env_file:
+      - /srv/env/common.env
     volumes:
       - /srv/firefox/config:/config
     network_mode: service:gluetun-proxy
@@ -47,6 +42,7 @@ services:
       - homepage.name=gluetun
       - homepage.icon=sh-firefox.svg
       - homepage.description=Proxied Browsing
+      - homepage.href=https://safe.domain.tld
     shm_size: "1gb"
     restart: unless-stopped
     depends_on:
