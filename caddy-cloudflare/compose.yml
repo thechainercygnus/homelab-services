@@ -18,10 +18,10 @@ services:
     labels:
       - homepage.group=Core
       - homepage.name=caddy
-      - homepage.icon=si-caddy.svg
+      - homepage.icon=sh-caddy.svg
       - homepage.description=Reverse Proxy Service
       - homepage.widget.type=caddy
-      - homepage.widget.url=http://localhost:2019
+      - homepage.widget.url=http://${CADDY_HOST}.domain.tld:2019
 
 volumes:
   caddy_config:

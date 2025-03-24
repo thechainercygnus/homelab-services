@@ -23,10 +23,10 @@ services:
       - /srv/env/gluetun-proxy.env
     restart: unless-stopped
     labels:
-      - homepage.section=Core
-      - homepage.name=Gluetun Proxy
-      - homepage.description=Network Proxy Services
+      - homepage.group=Core
+      - homepage.name=gluetun
       - homepage.icon=sh-mullvad.svg
+      - homepage.description=Network Proxy Services
       - homepage.widget.type=gluetun
       - homepage.widget.url=http://gtp.domain.tld
 
@@ -43,10 +43,10 @@ services:
       - /srv/firefox/config:/config
     network_mode: service:gluetun-proxy
     labels:
-      - homepage.section=Services
-      - homepage.name=Firefox
-      - homepage.description=Proxied Browsing
+      - homepage.group=Services
+      - homepage.name=gluetun
       - homepage.icon=sh-firefox.svg
+      - homepage.description=Proxied Browsing
     shm_size: "1gb"
     restart: unless-stopped
     depends_on:
