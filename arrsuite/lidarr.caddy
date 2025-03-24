@@ -5,6 +5,6 @@ lidarr.domain.tld {
         resolvers 1.1.1.1
     }
 
-    reverse_proxy gluetun-arrsuite:8989
+    reverse_proxy gluetun-arrsuite:8686
 
 }

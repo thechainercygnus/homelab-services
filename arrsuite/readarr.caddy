@@ -5,6 +5,6 @@ readarr.domain.tld {
         resolvers 1.1.1.1
     }
 
-    reverse_proxy gluetun-arrsuite:7878
+    reverse_proxy gluetun-arrsuite:8787
 
 }
