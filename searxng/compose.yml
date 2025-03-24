@@ -1,0 +1,54 @@
+---
+services:
+  searxng:
+    container_name: searxng
+    image: docker.io/searxng/searxng:latest
+    networks:
+      - searxng-backend
+      - caddy
+    volumes:
+      - /srv/searxng:/etc/searxng:rw
+    env_file:
+      - /srv/env/searxng.env
+    cap_drop:
+      - ALL
+    cap_add:
+      - CHOWN
+      - SETGID
+      - SETUID
+    restart: unless-stopped
+    labels:
+      - homepage.group=Services
+      - homepage.name=SearXNG
+      - homepage.icon=si-searxng
+      - homepage.href=https://search.domain.tld
+      - homepage.description=Self Hosted Search
+
+  redis:
+    container_name: redis
+    image: docker.io/valkey/valkey:8-alpine
+    command: valkey-server --save 30 1 --loglevel warning
+    restart: unless-stopped
+    networks:
+      - searxng-backend
+    volumes:
+      - valkey-data2:/data
+    cap_drop:
+      - ALL
+    cap_add:
+      - SETGID
+      - SETUID
+      - DAC_OVERRIDE
+    labels:
+      - homepage.group=Databases
+      - homepage.name=SearXNG Redis
+      - homepage.icon=si-searxng
+
+networks:
+  caddy:
+    external: true
+  searxng-backend:
+    external: true
+
+volumes:
+  valkey-data2:

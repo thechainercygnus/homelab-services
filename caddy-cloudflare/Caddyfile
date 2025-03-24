@@ -1,5 +1,6 @@
 {
     admin 0.0.0.0:2019
+    
     email admin@domain.tld
     tls {
         dns cloudflare {env.CF_API_TOKEN}
@@ -26,4 +27,8 @@ ldaps.domain.tld {
 
 cdio.domain.tld {
     reverse_proxy changedetection:5000
+}
+
+search.domain.tld {
+    reverse_proxy searxng:8080
 }
