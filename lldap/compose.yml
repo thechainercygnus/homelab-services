@@ -14,9 +14,9 @@ services:
       - /srv/env/lldap.env
     restart: unless-stopped
     labels:
-      - homepage.group=Core
+      - homepage.group=Services
       - homepage.name=lldap
-      - homepage.icon=si-serverless
+      - homepage.icon=mdi-account-outline
       - homepage.href=https://lldap.domain.tld
       - homepage.description=User and Group Management
 
