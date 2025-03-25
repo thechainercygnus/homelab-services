@@ -11,6 +11,7 @@ services:
     networks:
       - caddy
       - gitea-backend
+      - lldaps
     volumes:
       - gitea-data:/data
       - /etc/timezone:/etc/timezone:ro
@@ -53,4 +54,6 @@ networks:
   caddy:
     external: true
   gitea-backend:
+    external: true
+  lldaps:
     external: true

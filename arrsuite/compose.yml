@@ -32,6 +32,7 @@ services:
       - seccomp:unconfined #optional
     env_file:
       - /srv/env/common.env
+      - /srv/env/firefox.env
     volumes:
       - /srv/firefox/arrsuite/config:/config
     network_mode: service:gluetun-arrsuite
