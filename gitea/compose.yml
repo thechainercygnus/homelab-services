@@ -26,6 +26,9 @@ services:
       - homepage.icon=si-gitea-#609926
       - homepage.href=https://git.domain.tld
       - homepage.description=Remote Repository
+      - homepage.widget.type=gitea
+      - homepage.widget.url=https://git.domain.tld
+      - homepage.widget.key=${GITEA_API_TOKEN}
 
   db:
     image: postgres:14
