@@ -17,7 +17,7 @@ services:
     networks:
       - gluetun-caddy
     labels:
-      - homepage.group=arrSuite
+      - homepage.group=arrSuite.Core
       - homepage.name=arrSuite Gluetun Proxy
       - homepage.icon=sh-mullvad-vpn.svg
       - homepage.description=arrSuite Proxy Service
@@ -36,7 +36,7 @@ services:
       - /srv/firefox/arrsuite/config:/config
     network_mode: service:gluetun-arrsuite
     labels:
-      - homepage.group=arrSuite
+      - homepage.group=arrSuite.Core
       - homepage.name=Firefox
       - homepage.icon=sh-firefox.svg
       - homepage.description=Proxied Browsing
@@ -62,7 +62,7 @@ services:
         condition: service_started
     labels:
       - autoheal=true
-      - homepage.group=arrSuite
+      - homepage.group=arrSuite.Backend
       - homepage.name=SABnzbd
       - homepage.icon=sh-sabnzbd.svg
       - homepage.description=arrSuite Downloader
@@ -90,7 +90,7 @@ services:
       - /srv/arrsuite/Media:/Media
     restart: unless-stopped
     labels:
-      - homepage.group=arrSuite
+      - homepage.group=arrSuite.Backend
       - homepage.name=Prowlarr
       - homepage.icon=sh-prowlarr.svg
       - homepage.description=arrSuite Index Manager
@@ -121,7 +121,7 @@ services:
       - /srv/arrsuite/Media:/Media
     restart: unless-stopped
     labels:
-      - homepage.group=arrSuite
+      - homepage.group=arrSuite.Search
       - homepage.name=Sonarr
       - homepage.icon=sh-sonarr.svg
       - homepage.description=arrSuite Series Collection Manager
@@ -147,7 +147,7 @@ services:
       - /srv/arrsuite/Media:/Media
     restart: unless-stopped
     labels:
-      - homepage.group=arrSuite
+      - homepage.group=arrSuite.Search
       - homepage.name=Radarr
       - homepage.icon=sh-radarr.svg
       - homepage.description=arrSuite Movie Collection Manager
@@ -174,7 +174,7 @@ services:
       - /srv/arrsuite/Media:/Media
     restart: unless-stopped
     labels:
-      - homepage.group=arrSuite
+      - homepage.group=arrSuite.Search
       - homepage.name=Lidarr
       - homepage.icon=sh-lidarr.svg
       - homepage.description=arrSuite Music Collection Manager
@@ -199,7 +199,7 @@ services:
       - /srv/arrsuite/Media:/Media
     restart: unless-stopped
     labels:
-      - homepage.group=arrSuite
+      - homepage.group=arrSuite.Search
       - homepage.name=Readarr
       - homepage.icon=sh-readarr.svg
       - homepage.description=arrSuite Book Collection Manager
