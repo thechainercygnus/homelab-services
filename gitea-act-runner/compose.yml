@@ -1,0 +1,15 @@
+services:
+  runner:
+    image: docker.io/gitea/act_runner:nightly
+    env_file:
+      - /srv/env/gitearunner.env
+    volumes:
+      - /srv/gitearunner/config.yaml:/config.yaml
+      - /srv/gitearunner/data:/data
+      - /var/run/docker.sock:/var/run/docker.sock
+    labels:
+      - homepage.group=Headless
+      - homepage.name=Gitea Act Runner
+      - homepage.icon=sh-gitea.svg
+      - homepage.description=Runner for Gitea Actions CI/CD Pipelines
+      - homepage.showStats=true
