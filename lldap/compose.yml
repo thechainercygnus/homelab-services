@@ -6,9 +6,10 @@ services:
       - "/srv/lldap/data:/data"
       - "/srv/lldap/certs:/certs"
       - "/srv/lldap/files:/files"
+    ports:
+      - "3890:3890"
     networks:
       - lldap-backend
-      - lldaps
       - caddy
     env_file:
       - /srv/env/lldap.env
@@ -46,6 +47,4 @@ networks:
   caddy:
     external: true
   lldap-backend:
-    external: true
-  lldaps:
     external: true
