@@ -15,6 +15,7 @@ services:
       - homepage.icon=si-strava.svg
       - homepage.href=https://stravarelay.domain.tld/
       - homepage.widget.type=customapi
+      - homepage.widget.refreshInterval=900000
       - homepage.widget.url=https://stravarelay.domain.tld/widget/ride
       - homepage.widget.mappings[0].field=total_ride_distance
       - homepage.widget.mappings[0].label=Total
