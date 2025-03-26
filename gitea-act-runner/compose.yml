@@ -7,6 +7,7 @@ services:
       - /srv/gitearunner/config.yaml:/config.yaml
       - /srv/gitearunner/data:/data
       - /var/run/docker.sock:/var/run/docker.sock
+    restart: unless-stopped
     labels:
       - homepage.group=Headless
       - homepage.name=Gitea Act Runner
