@@ -9,6 +9,15 @@ services:
     volumes:
       - /srv/stravarelay/data:/app/data
     restart: unless-stopped
+    labels:
+      - homepage.group=Adventures
+      - homepage.name=Strava
+      - homepage.icon=si-strava.svg
+      - homepage.widget.type=customapi
+      - homepage.widget.url=http://strvarelay.durish.xyz
+      - homepage.widget.mappings.field.ytd_ride_totals=distance
+      - homepage.widget.mappings.label=YTD Ride
+
 
 networks:
   caddy:
