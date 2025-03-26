@@ -14,9 +14,15 @@ services:
       - homepage.name=Strava
       - homepage.icon=si-strava.svg
       - homepage.widget.type=customapi
-      - homepage.widget.url=http://strvarelay.durish.xyz
-      - homepage.widget.mappings.field.ytd_ride_totals=distance
-      - homepage.widget.mappings.label=YTD Ride
+      - homepage.widget.url=https://stravarelay.domain.tld/athlete/stats
+      - homepage.widget.mappings[0].field=all_ride_totals.distance
+      - homepage.widget.mappings[0].label=Total Ride Distance
+      - homepage.widget.mappings[1].field=recent_ride_totals.distance
+      - homepage.widget.mappings[1].label=Recent Ride Distance
+      - homepage.widget.mappings[2].field=ytd_ride_totals.distance
+      - homepage.widget.mappings[2].label=YTD Ride Distance
+      - homepage.widget.mappings[3].field=biggest_ride_distance
+      - homepage.widget.mappings[3].label=Biggest Ride
 
 
 networks:
