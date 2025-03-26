@@ -1,6 +1,6 @@
 services:
   stravarelay:
-    image: git.durish.xyz/brycej/stravarelay:latest
+    image: git.durish.xyz/brycej/stravarelay:v0.14
     container_name: stravarelay
     networks:
       - caddy
@@ -13,16 +13,21 @@ services:
       - homepage.group=Adventures
       - homepage.name=Strava
       - homepage.icon=si-strava.svg
+      - homepage.href=https://stravarelay.domain.tld/
       - homepage.widget.type=customapi
       - homepage.widget.url=https://stravarelay.domain.tld/widget/ride
       - homepage.widget.mappings[0].field=total_ride_distance
       - homepage.widget.mappings[0].label=Total
+      - homepage.widget.mappings[0].suffix=mi
       - homepage.widget.mappings[1].field=recent_ride_distance
       - homepage.widget.mappings[1].label=Recent
+      - homepage.widget.mappings[1].suffix=mi
       - homepage.widget.mappings[2].field=ytd_ride_distance
       - homepage.widget.mappings[2].label=YTD
+      - homepage.widget.mappings[2].suffix=mi
       - homepage.widget.mappings[3].field=biggest_ride_distance
       - homepage.widget.mappings[3].label=Biggest
+      - homepage.widget.mappings[3].suffix=mi
 
 
 networks:
