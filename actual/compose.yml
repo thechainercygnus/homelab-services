@@ -1,0 +1,26 @@
+services:
+  actual_server:
+    image: docker.io/actualbudget/actual-server:latest
+    env_file:
+      - /srv/env/common.env
+    volumes:
+      - /srv/actual/data:/data
+    networks:
+      - caddy
+    healthcheck:
+      test: ['CMD-SHELL', 'node src/scripts/health-check.js']
+      interval: 60s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
+    restart: unless-stopped
+    labels:
+      - homepage.group=Adulting
+      - homepage.name=Actual
+      - homepage.description=Self Hosted Budgeting Application
+      - homepage.icon=si-actual-budget.svg
+      - homepage.href=https://actual.domain.tld/
+
+networks:
+  caddy:
+    external: true
