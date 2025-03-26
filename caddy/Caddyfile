@@ -11,3 +11,4 @@ import /etc/caddy/homepage/*.caddy
 import /etc/caddy/lldap/*.caddy
 import /etc/caddy/searxng/*.caddy
 import /etc/caddy/stravarelay/*.caddy
+import /etc/caddy/actual/*.caddy
