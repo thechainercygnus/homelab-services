@@ -1,6 +1,7 @@
 services:
-  actual_server:
+  server:
     image: docker.io/actualbudget/actual-server:latest
+    container_name: actual-server
     env_file:
       - /srv/env/common.env
     volumes:
