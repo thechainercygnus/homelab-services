@@ -2,8 +2,14 @@ services:
   stravarelay:
     image: git.durish.xyz/brycej/stravarelay:latest
     container_name: stravarelay
+    networks:
+      - caddy
     env_file:
       - /srv/env/stravarelay.env
     volumes:
       - /srv/stravarelay/data:/app/data
     restart: unless-stopped
+
+networks:
+  caddy:
+    external: true
