@@ -14,6 +14,12 @@ services:
       retries: 3
       start_period: 20s
     restart: unless-stopped
+    labels:
+      - homepage.group=Adulting
+      - homepage.name=Actual
+      - homepage.description=Self Hosted Budgeting Application
+      - homepage.icon=si-actual-budget.svg
+      - homepage.href=https://actual.domain.tld/
 
 networks:
   caddy:
