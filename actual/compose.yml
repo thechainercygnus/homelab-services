@@ -19,7 +19,7 @@ services:
       - homepage.group=Adulting
       - homepage.name=Actual
       - homepage.description=Self Hosted Budgeting Application
-      - homepage.icon=si-actual-budget.svg
+      - homepage.icon=sh-actual-budget.svg
       - homepage.href=https://actual.domain.tld/
 
 networks:
