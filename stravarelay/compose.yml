@@ -1,0 +1,9 @@
+services:
+  stravarelay:
+    image: git.durish.xyz/brycej/stravarelay:latest
+    container_name: stravarelay
+    env_file:
+      - /srv/env/stravarelay.env
+    volumes:
+      - /srv/stravarelay/data:/app/data
+    restart: unless-stopped
