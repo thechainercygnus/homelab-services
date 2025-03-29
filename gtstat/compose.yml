@@ -1,0 +1,16 @@
+services:
+  gtstat:
+    image: git.durish.xyz/brycej/gtstat:v0.1
+    container_name: gtstat
+    networks:
+      - gtstat
+    env_file:
+      - /srv/env/gtstat.env
+    volumes:
+      - /srv/gtstat/data:/app/data
+      - /srv/gtstat/logs:/app/logs
+    restart: unless-stopped
+
+networks:
+  gtstat:
+    external: true
