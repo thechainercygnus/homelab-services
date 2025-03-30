@@ -1,0 +1,16 @@
+---
+services:
+  jellyseerr:
+    image: ghcr.io/fallenbagel/jellyseerr:latest
+    container_name: jellyseerr
+    env_file:
+      - /srv/env/common.env
+    networks:
+      - caddy
+    volumes:
+      - /srv/jellyseerr/config:/app/config
+    restart: unless-stopped
+
+networks:
+  caddy:
+    external: true
