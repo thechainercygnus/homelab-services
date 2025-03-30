@@ -1,6 +1,6 @@
 services:
   gtstat:
-    image: git.durish.xyz/brycej/gtstat:v0.3
+    image: git.durish.xyz/brycej/gtstat:v0.4
     container_name: gtstat
     networks:
       - gtstat
