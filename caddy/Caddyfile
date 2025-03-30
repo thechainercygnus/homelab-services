@@ -13,3 +13,4 @@ import /etc/caddy/searxng/*.caddy
 import /etc/caddy/stravarelay/*.caddy
 import /etc/caddy/actual/*.caddy
 import /etc/caddy/jellyfin/*.caddy
+import /etc/caddy/jellyseerr/*.caddy
