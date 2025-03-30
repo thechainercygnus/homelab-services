@@ -1,0 +1,15 @@
+services:
+  jellyfin:
+    image: jellyfin/jellyfin
+    container_name: jellyfin
+    network_mode: 'host'
+    env_file:
+      - /srv/env/common.env
+      - /srv/env/jellyfin.env
+    volumes:
+      - /srv/jellyfin/config:/config
+      - /srv/jellyfin/cache:/cache
+      - /srv/arrsuite/Media:/media:ro
+    restart: 'unless-stopped'
+    extra_hosts:
+      - 'host.docker.internal:host-gateway'
