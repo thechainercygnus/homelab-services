@@ -14,13 +14,13 @@ services:
     extra_hosts:
       - 'host.docker.internal:host-gateway'
     labels:
-      - homepage.group=arrSuite.core
+      - homepage.group=arrSuite.Core
       - homepage.name=Jellyfin
       - homepage.icon=sh-jellyfin.svg
       - homepage.href=https://watch.domain.tld
       - homepage.description=Media Player
       - homepage.widget.type=jellyfin
-      - homepage.widget.url=https://watch.domain.tld
+      - homepage.widget.url=http://127.0.0.1:8096
       - homepage.widget.key=${JELLYFIN_API_TOKEN}
       - homepage.widget.enableUser=true
       - homepage.widget.showEpisodeNumber=true
