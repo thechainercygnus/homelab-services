@@ -10,6 +10,15 @@ services:
     volumes:
       - /srv/jellyseerr/config:/app/config
     restart: unless-stopped
+    labels:
+      - homepage.group=arrSuite.Core
+      - homepage.name=Jellyseerr
+      - homepage.icon=sh-jellyseerr
+      - homepage.href=https://request.domain.tld
+      - homepage.description=Media Request Portal
+      - homepage.widget.type=jellyseerr
+      - homepage.widget.url=https://request.domain.tld
+      - homepage.widget.key=${JELLYSEERR_API_TOKEN}
 
 networks:
   caddy:

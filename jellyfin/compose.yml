@@ -13,3 +13,14 @@ services:
     restart: 'unless-stopped'
     extra_hosts:
       - 'host.docker.internal:host-gateway'
+    labels:
+      - homepage.group=arrSuite.core
+      - homepage.name=Jellyfin
+      - homepage.icon=sh-jellyfin.svg
+      - homepage.href=https://watch.domain.tld
+      - homepage.description=Media Player
+      - homepage.widget.type=jellyfin
+      - homepage.widget.url=https://watch.domain.tld
+      - homepage.widget.key=${JELLYFIN_API_TOKEN}
+      - homepage.widget.enableUser=true
+      - homepage.widget.showEpisodeNumber=true
