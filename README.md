@@ -100,6 +100,11 @@ services:
     command: "command to execute"
     networks:
       - network_name
+    labels:
+      - homepage.group=group
+      - homepage.name=servicename
+      - homepage.icon=serviceicon
+      - homepage.href=https://service.domain.tld
 
 networks:
   network_name:

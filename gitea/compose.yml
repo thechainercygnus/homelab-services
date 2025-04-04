@@ -21,7 +21,7 @@ services:
       - db
     restart: unless-stopped
     labels:
-      - homepage.group=Development
+      - homepage.group=Services.Left
       - homepage.name=Gitea
       - homepage.icon=si-gitea-#609926
       - homepage.href=https://git.domain.tld

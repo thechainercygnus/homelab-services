@@ -9,6 +9,11 @@ services:
       - caddy
     volumes:
       - /srv/otterwiki/data:/app-data
+    labels:
+      - homepage.group=Services.Left
+      - homepage.name=OtterWiki
+      - homepage.icon=sh-an-otter-wiki.png
+      - homepage.href=https://otterwiki.domain.tld
 
 networks:
   caddy:

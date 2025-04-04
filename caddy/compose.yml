@@ -17,7 +17,7 @@ services:
       - 80:80
       - 443:443
     labels:
-      - homepage.group=Core
+      - homepage.group=Services.Right
       - homepage.name=Caddy
       - homepage.icon=sh-caddy.svg
       - homepage.description=Reverse Proxy Service

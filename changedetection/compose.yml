@@ -13,7 +13,7 @@ services:
       - caddy
       - changedetection-backend
     labels:
-      - homepage.group=Services
+      - homepage.group=Services.Right
       - homepage.name=Change Detection
       - homepage.icon=sh-changedetection.svg
       - homepage.href=https://cdio.domain.tld

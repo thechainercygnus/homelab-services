@@ -21,7 +21,7 @@ services:
       - /srv/env/gluetun-proxy.env
     restart: unless-stopped
     labels:
-      - homepage.group=Core
+      - homepage.group=Services.Center
       - homepage.name=Gluetun Proxy
       - homepage.icon=sh-mullvad-vpn.svg
       - homepage.description=Network Proxy Services
@@ -39,7 +39,7 @@ services:
       - /srv/firefox/proxy/config:/config
     network_mode: service:gluetun-proxy
     labels:
-      - homepage.group=Services
+      - homepage.group=Services.Center
       - homepage.name=Firefox
       - homepage.icon=sh-firefox.svg
       - homepage.description=Proxied Browsing
