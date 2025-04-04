@@ -18,7 +18,7 @@ services:
       - SETUID
     restart: unless-stopped
     labels:
-      - homepage.group=Services.Center
+      - homepage.group=Services.Right
       - homepage.name=SearXNG
       - homepage.icon=si-searxng
       - homepage.href=https://search.domain.tld

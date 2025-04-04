@@ -10,7 +10,7 @@ services:
     volumes:
       - /srv/otterwiki/data:/app-data
     labels:
-      - homepage.group=Services.Left
+      - homepage.group=Services.Right
       - homepage.name=OtterWiki
       - homepage.icon=sh-an-otter-wiki.png
       - homepage.href=https://otterwiki.domain.tld

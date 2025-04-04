@@ -39,7 +39,7 @@ services:
       - /srv/firefox/proxy/config:/config
     network_mode: service:gluetun-proxy
     labels:
-      - homepage.group=Services.Center
+      - homepage.group=Services.Right
       - homepage.name=Firefox
       - homepage.icon=sh-firefox.svg
       - homepage.description=Proxied Browsing
