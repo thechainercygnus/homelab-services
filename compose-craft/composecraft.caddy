@@ -1,10 +1,10 @@
-git.domain.tld {
+composecraft.domain.tld {
     tls {
         dns cloudflare {env.CF_API_TOKEN}
         propagation_delay 2m
         resolvers 1.1.1.1
     }
 
-    reverse_proxy gitea-server:3000
+    reverse_proxy composecraft-server:3000
 
 }
