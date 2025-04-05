@@ -1,0 +1,42 @@
+name: compose-craft
+services:
+  saas:
+    image: composecraft/composecraft:latest
+    container_name: composecraft-server
+    env_file:
+      - /srv/env/composecraft.env
+    depends_on:
+      - composecraft-db
+    restart: unless-stopped
+    networks:
+      - composecraft-backend
+      - caddy
+    labels:
+      - homepage.group=Services.Right
+      - homepage.name=Compose Craft
+      - homepage.icon=sh-compose-craft.svg
+      - homepage.href=https://composecraft.domain.tld
+
+  db:
+    image: mongo:latest
+    container_name: composecraft-db
+    env_file:
+      - /srv/env/composecraft-db.env
+    networks:
+      - composecraft-backend
+    restart: unless-stopped
+    volumes:
+      - /srv/composecraft/mongo/data:/data/db
+    labels:
+      - homepage.group=Databases
+      - homepage.name=MongoDB
+      - homepage.icon=si-mongodb
+      - homepage.showStats=true
+
+networks:
+  composecraft-backend:
+    driver: bridge
+    attachable: false
+    external: false
+  caddy:
+    external: true
