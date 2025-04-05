@@ -1,12 +1,12 @@
 name: compose-craft
 services:
-  saas:
+  server:
     image: composecraft/composecraft:latest
     container_name: composecraft-server
     env_file:
       - /srv/env/composecraft.env
     depends_on:
-      - composecraft-db
+      - db
     restart: unless-stopped
     networks:
       - composecraft-backend
