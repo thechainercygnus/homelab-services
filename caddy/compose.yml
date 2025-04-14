@@ -23,6 +23,9 @@ services:
       - homepage.description=Reverse Proxy Service
       - homepage.widget.type=caddy
       - homepage.widget.url=http://${CADDY_HOST}.domain.tld:2019
+      - caddy=(tinyauth_forwarder)
+      - caddy.forward_auth=tinyauth:3000
+      - caddy.forward_auth.uri=/api/auth/caddy
 
 volumes:
   caddy_config:

@@ -1,0 +1,18 @@
+services:
+  tinyauth:
+    image: ghcr.io/steveiliop56/tinyauth:v3
+    container_name: tinyauth
+    restart: unless-stopped
+    env_file:
+      - /srv/env/tinyauth.env
+    labels:
+      caddy: http://tinyauth.domain.tld
+      caddy.reverse_proxy: "{{upstreams 3000}}"
+      homepage.group: Services.Left
+      homepage.name: TinyAuth
+      homepage.icon: sh-tinyauth.svg
+      homepage.description: Service Auth
+
+networks:
+  caddy:
+    external: true
