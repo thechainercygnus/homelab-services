@@ -10,7 +10,8 @@ services:
       caddy.reverse_proxy: "{{upstreams 3000}}"
       homepage.group: Services.Left
       homepage.name: TinyAuth
-      homepage.icon: sh-tinyauth.svg
+      homepage.icon: sh-tinyauth.png
+      homepage.href: https://tinyauth.domain.tld
       homepage.description: Service Auth
 
 networks:
