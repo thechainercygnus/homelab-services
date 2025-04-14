@@ -5,6 +5,8 @@ services:
     restart: unless-stopped
     env_file:
       - /srv/env/tinyauth.env
+    environment:
+      - USERS_FILE=/srv/tinyauth/users.file
     labels:
       caddy: http://tinyauth.domain.tld
       caddy.reverse_proxy: "{{upstreams 3000}}"
