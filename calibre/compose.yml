@@ -1,0 +1,18 @@
+services:
+  calibre:
+    image: lscr.io/linuxserver/calibre:latest
+    container_name: calibre
+    security_opt:
+      - seccomp:unconfined
+    env_file:
+      - /srv/env/common.env
+      - /srv/env/calibre.env
+    volumes:
+      - /srv/calibre/config:/config
+    networks:
+      - caddy
+    restart: unless-stopped
+
+networks:
+  caddy:
+    external: true
