@@ -1,9 +1,0 @@
-calibre.durish.xyz {
-    tls {
-        dns cloudflare {env.CF_API_TOKEN}
-        propagation_delay 2m
-        resolvers 1.1.1.1
-    }
-
-    reverse_proxy calibre:8081
-}
