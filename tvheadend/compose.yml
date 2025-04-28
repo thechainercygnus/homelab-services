@@ -1,0 +1,19 @@
+---
+services:
+  tvheadend:
+    image: lscr.io/linuxserver/tvheadend:latest
+    container_name: tvheadend
+    env_file:
+      - /srv/env/common.env
+    volumes:
+      - /srv/tvheadend/data:/config
+      - /srv/tvheadend/recordings:/recordings
+    networks:
+      - caddy
+    ports:
+      - 9982:9982
+    restart: unless-stopped
+
+networks:
+  caddy:
+    external: true

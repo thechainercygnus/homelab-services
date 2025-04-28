@@ -1,0 +1,9 @@
+tv.durish.xyz {
+    tls {
+        dns cloudflare {env.CF_API_TOKEN}
+        propagation_delay 2m
+        resolvers 1.1.1.1
+    }
+
+    reverse_proxy tvheadend:9981
+}
