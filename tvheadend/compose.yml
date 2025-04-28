@@ -14,6 +14,12 @@ services:
       - 9981:9981
       - 9982:9982
     restart: unless-stopped
+    labels:
+      - homepage.group=arrSuite.Core
+      - homepage.name=TVHeadend
+      - homepage.icon=sh-tbheadend.webp
+      - homepage.href=https://tv.domain.tld
+      - homepage.description=TV Streaming Solution
 
 networks:
   tvheadend: {}
