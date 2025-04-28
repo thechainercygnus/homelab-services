@@ -222,7 +222,7 @@ services:
       - /srv/env/common.env
     volumes:
       - /srv/bazarr/config:/config
-      - /srv/arrsuite/Media/movies:/movies
+      - /srv/arrsuite/Media/Movies:/movies
       - /srv/arrsuite/Media/TV:/tv
     restart: unless-stopped
     networks:
@@ -230,7 +230,7 @@ services:
     labels:
       - homepage.group=arrSuite.Search
       - homepage.name=Bazarr
-      - homepage.icon=sh-bazarr.svg
+      - homepage.icon=sh-bazarr.webp
       - homepage.description=arrSuite Subtitle Manager
       - homepage.href=https://bazarr.domain.tld
       - homepage.widget.type=bazarr
