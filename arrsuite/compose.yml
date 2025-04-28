@@ -224,9 +224,9 @@ services:
       - /srv/bazarr/config:/config
       - /srv/arrsuite/Media/movies:/movies
       - /srv/arrsuite/Media/TV:/tv
-    ports:
-      - 6767:6767
     restart: unless-stopped
+    networks:
+      - caddy
     labels:
       - homepage.group=arrSuite.Search
       - homepage.name=Bazarr
@@ -239,4 +239,6 @@ services:
 
 networks:
   gluetun-caddy:
+    external: true
+  caddy:
     external: true
