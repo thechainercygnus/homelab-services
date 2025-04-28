@@ -5,5 +5,5 @@ tv.durish.xyz {
         resolvers 1.1.1.1
     }
 
-    reverse_proxy tvheadend:9981
+    reverse_proxy 127.0.0.1:9981
 }

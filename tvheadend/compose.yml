@@ -9,11 +9,11 @@ services:
       - /srv/tvheadend/data:/config
       - /srv/tvheadend/recordings:/recordings
     networks:
-      - caddy
+      - tvheadend
     ports:
+      - 9981:9981
       - 9982:9982
     restart: unless-stopped
 
 networks:
-  caddy:
-    external: true
+  tvheadend: {}
