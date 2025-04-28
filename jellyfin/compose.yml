@@ -9,7 +9,7 @@ services:
     volumes:
       - /srv/jellyfin/config:/config
       - /srv/jellyfin/cache:/cache
-      - /srv/arrsuite/Media:/media:ro
+      - /srv/arrsuite/Media:/media
     restart: 'unless-stopped'
     extra_hosts:
       - 'host.docker.internal:host-gateway'
