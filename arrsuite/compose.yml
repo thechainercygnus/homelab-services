@@ -215,6 +215,28 @@ services:
       prowlarr:
         condition: service_healthy
 
+  bazarr:
+    image: lscr.io/linuxserver/bazarr:latest
+    container_name: bazarr
+    env_file:
+      - /srv/env/common.env
+    volumes:
+      - /srv/bazarr/config:/config
+      - /srv/arrsuite/Media/movies:/movies
+      - /srv/arrsuite/Media/TV:/tv
+    ports:
+      - 6767:6767
+    restart: unless-stopped
+    labels:
+      - homepage.group=arrSuite.Search
+      - homepage.name=Bazarr
+      - homepage.icon=sh-bazarr.svg
+      - homepage.description=arrSuite Subtitle Manager
+      - homepage.href=https://bazarr.domain.tld
+      - homepage.widget.type=bazarr
+      - homepage.widget.url=https://bazarr.domain.tld
+      - homepage.widget.key=${BAZARR_KEY}
+
 networks:
   gluetun-caddy:
     external: true
